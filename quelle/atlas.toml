@@ -1,0 +1,852 @@
+# Zukunftsatlas Deutschland 2035: Inhalt der Seite. Bauen: python build.py
+# Quelle der Texte: ../unsicherheiten_v1.md, ../achsen_v1.md, ../signale_v1.md (Stand 13.11.2026).
+# Löst ein Signal auf: aufgeloest = "ja" oder "nein" und aufgeloest_am = JJJJ-MM-TT setzen, neu bauen.
+# Achse A senkrecht (plus = oben), Achse B waagerecht (plus = rechts). L und I sind Ergebnisse, keine Achsen.
+
+[seite]
+titel = "Zukunftsatlas Deutschland 2035"
+stand = 2026-11-13
+indexieren = true
+beschreibung = "Wächst Deutschland in seine Rechnung hinein? Neun Unsicherheiten, zwei Achsen, vier Felder und 39 Signale, ausgehend vom Jahresgutachten 2026/27 des Sachverständigenrates."
+overline = "Deutschland 2035 · Ausgangspunkt: Jahresgutachten 2026/27 des Sachverständigenrates"
+leitfrage = "Wächst Deutschland in seine Rechnung hinein?"
+einleitung = "Verteidigung, Zinsen und Alterung schreiben die Rechnung bis 2035 weitgehend fest. Offen ist, wie rau das Umfeld wird und wie breit die Basis, die sie trägt. 39 Signale zeigen früh, wohin es geht; das erste löst sich im Dezember 2026 auf."
+gutachten_link = "https://www.sachverstaendigenrat-wirtschaft.de/jahresgutachten-2026.html"
+url = "https://nikwall.github.io/zukunftsatlas-deutschland/"
+repo = "https://github.com/nikwall/zukunftsatlas-deutschland"
+kontakt = "kontakt@arqdecisions.com"
+
+[[kennzahl]]
+wert = "2,7–4,8 %"
+text = "des BIP fehlen dem Bundeshaushalt 2040, je nachdem, wie schnell die Kredite für Verteidigung zurückgeführt werden."
+[[kennzahl]]
+wert = "78–98 %"
+text = "des BIP beträgt der Schuldenstand 2040 in denselben Szenarien."
+[[kennzahl]]
+wert = "49,7 %"
+text = "erreichen die Sozialbeiträge 2040 unter geltendem Recht, nach 42,3 % heute."
+[[kennzahl]]
+wert = "0,2–0,3 %"
+text = "pro Jahr wächst das Produktionspotenzial bis 2031, weil das Arbeitsvolumen schrumpft."
+
+# ---------------------------------------------------------------- Achsen
+[achse.A]
+frage = "Wie rau wird es von außen?"
+pol_plus = "ruhiger"
+pol_minus = "rauer"
+kurz_plus = "ruhig"
+kurz_minus = "rau"
+aussage = "ein ruhigeres Umfeld"
+p = 0.28
+regel = "Das Umfeld ist <b>rau</b>, wenn mindestens zwei der drei Bestandteile zutreffen: Verteidigung bei 3,5 %, eine neue Krisenkasse, Gas 2028 nicht unter 45 €/MWh."
+bestandteile = ["U6", "U9", "U7"]
+
+[achse.B]
+frage = "Wie breit wird die Basis?"
+pol_plus = "breiter"
+pol_minus = "schmaler"
+kurz_plus = "breit"
+kurz_minus = "schmal"
+aussage = "eine breitere Basis"
+p = 0.43
+regel = "Die Basis ist <b>breit</b>, wenn mindestens zwei der vier Bestandteile zutreffen: Produktivität mindestens +1,2 % pro Jahr, Zuwanderung mindestens 200.000, Sozialbeiträge unter 46 %, Bundrendite nicht über dem Wachstum."
+bestandteile = ["U2", "U3", "U4", "U5"]
+
+# ---------------------------------------------------------------- Ergebnisse je Feld (Simulation, 400.000 Ziehungen)
+[ergebnis.L]
+name = "Lücke geschlossen"
+frage = "Liegt das Staatsdefizit 2035 bei höchstens 3 % des BIP?"
+je_feld = { PP = 0.75, MP = 0.49, PM = 0.55, MM = 0.29 }
+[ergebnis.I]
+name = "Industrie hält"
+frage = "Erwirtschaftet die Industrie 2035 mindestens 17,5 % der Wertschöpfung?"
+je_feld = { PP = 0.50, MP = 0.41, PM = 0.43, MM = 0.35 }
+
+# ---------------------------------------------------------------- Felder (erste Stelle A, zweite B)
+[feld.PP]
+name = "Breites Wachstum"
+kurz = "Ruhiger von außen, breitere Basis."
+szene = "Die Lage beruhigt sich, Energie wird günstiger, neue Krisenkassen bleiben aus. Zuwanderung oder Produktivität tragen, und die Beiträge bleiben unter 46 %. Der Bund kann die Kredite für Verteidigung zurückführen, ohne an anderer Stelle hart zu kürzen."
+zeichen = ["Waffenstillstand in der Ukraine, Gas wieder unter 45 €/MWh", "Beiträge unter 46 %, Zins unter dem Wachstum"]
+[feld.MP]
+name = "Wachstum unter Druck"
+kurz = "Rauer von außen, die Basis wächst mit."
+szene = "Verteidigung bei 3,5 %, teure Energie oder eine neue Krisenkasse, aber die Basis wächst mit: mehr Menschen, mehr Produktivität oder gebremste Beiträge. Höhere Einnahmen tragen einen Teil der Rechnung."
+zeichen = ["NATO-Quote bei 3,5 %, Energie bleibt teuer", "Zuwanderung oder Produktivität über den Annahmen"]
+[feld.PM]
+name = "Stilles Altern"
+kurz = "Ruhiger von außen, schmalere Basis."
+szene = "Außen wird es ruhiger, innen schrumpft die Basis: wenig Zuwanderung, schwache Produktivität, steigende Beiträge, ein Zins über dem Wachstum. Weil die Rechnung von außen kleiner bleibt, schließt sich die Lücke in gut der Hälfte dieser Welten."
+zeichen = ["Weniger Druck auf den Verteidigungshaushalt", "Beiträge über 46 %, Zuwanderung unter 200.000"]
+[feld.MM]
+name = "Doppelte Last"
+kurz = "Rauer von außen, schmaler von innen."
+szene = "Verteidigung, Krisen und Energie treiben die Ausgaben, während weniger Menschen mit wenig mehr Produktivität sie tragen. Die Annahmen des Jahresgutachtens liegen in diesem Feld: Verteidigung bei 3,5 %, teure Energie, Potenzialwachstum um 0,3 %, weniger Zuwanderung, Beiträge Richtung 50 %."
+zeichen = ["Verteidigung bei 3,5 %, neue Krisenkasse", "Beiträge Richtung 50 %, Zins über dem Wachstum"]
+
+# ---------------------------------------------------------------- Neun Unsicherheiten
+# achse: A, B oder L/I (Ergebnis). zaehlt = wann der Bestandteil zum Pol zählt.
+[[unsicherheit]]
+id = "U6"
+achse = "A"
+titel = "Reichen die Mittel für Verteidigung?"
+kriterium = "Deutschland meldet der NATO für 2035 Kernausgaben für Verteidigung von mindestens 3,5 % des BIP."
+zaehlt = "zählt als rau, wenn ja"
+basisrate = "Beim Zwei-Prozent-Ziel von Wales (2014) erfüllten 2014 drei von 28 Verbündeten die Marke, zehn Jahre später 23 von 32. Deutschland brauchte die volle Dekade."
+p = 0.60
+gruende = [
+  "Verteidigung ist der größte Treiber der Lücke, bis 2040 rund 2,2 Prozentpunkte des BIP mehr als 2025.",
+  "Die Finanzierung ist von der Schuldenbremse ausgenommen, die Bundesregierung plant 3,5 % bis 2029, und die NATO-Zusage von Den Haag nennt genau 2035. Für 2026 schätzt die NATO 2,7 %.",
+  "Ein Waffenstillstand in der Ukraine kann die Dringlichkeit nehmen, und ab 2031 konkurriert Verteidigung mit der Konsolidierung. Nach 1990 sanken die Ausgaben rasch, als die Bedrohung nachließ.",
+]
+[[unsicherheit]]
+id = "U9"
+achse = "A"
+titel = "Kommt eine neue Krisenkasse?"
+kriterium = "Der Bundestag erklärt bis Ende 2035 eine Notlage nach Artikel 115 Grundgesetz oder beschließt ein neues kreditfinanziertes Sondervermögen."
+zaehlt = "zählt als rau, wenn ja"
+basisrate = "Seit 2009 enthielten 8 von 10 Neunjahreszeiträumen mindestens einen solchen Schritt: Investitions- und Tilgungsfonds 2009, Notlagen 2020 bis 2022, Sondervermögen Bundeswehr 2022, Sondervermögen Infrastruktur und Klimaneutralität 2025."
+p = 0.70
+gruende = [
+  "Der Sachverständigenrat rechnet bis 2040 ohne neue Notlage. Jede neue Krisenkasse kommt zu seinen Schuldenpfaden hinzu.",
+  "Große Krisen kommen etwa alle fünf bis zehn Jahre. Der Rat nennt selbst Risiken bei der Finanzierung von KI-Rechenzentren, und die Gasspeicher sind vor diesem Winter knapp gefüllt.",
+  "Die beiden großen Anlässe von 2022 und 2025, Verteidigung und Infrastruktur, sind bereits abgedeckt.",
+]
+[[unsicherheit]]
+id = "U7"
+achse = "A"
+titel = "Beruhigen sich die Energiepreise?"
+kriterium = "Der Großhandelspreis für Gas (THE) liegt 2028 im Jahresschnitt unter 45 €/MWh, dem 1,2-fachen des Niveaus von 2025."
+zaehlt = "zählt als rau, wenn nein"
+basisrate = "Von sechs großen Energiepreisschocks seit 1973 lag der reale Preis zwei Jahre nach dem Gipfel dreimal wieder nahe am Vorkrisenniveau (Öl 1990, 2008, 2022) und dreimal deutlich darüber (Öl 1974 und 1980, Gas in Europa 2022)."
+p = 0.30
+gruende = [
+  "Energie ist der Kostenblock, an dem energieintensive Industrie bleibt oder geht. Der Schock seit März 2026 treibt die Inflation 2027 laut Prognose auf 3,3 %.",
+  "Beim Öl hat sich der Preis in den letzten drei Schocks binnen zwei Jahren normalisiert. Die Terminkurve sieht Gas von 92,5 € Anfang 2027 auf 68 € Ende 2027 sinken.",
+  "Auch 68 € liegen weit über 45 €. Die Gasspeicher waren am 9.11.2026 nur zu 59 % gefüllt, so niedrig wie nie seit 2011, und beim letzten Gasschock lag der Preis zwei Jahre nach dem Gipfel noch beim Zweifachen.",
+]
+[[unsicherheit]]
+id = "U2"
+achse = "B"
+titel = "Kommt die Produktivität zurück?"
+kriterium = "Die Arbeitsproduktivität je Erwerbstätigenstunde wächst von 2025 bis 2035 im Schnitt um mindestens 1,2 % pro Jahr."
+zaehlt = "zählt als breit, wenn ja"
+basisrate = "In 14 westeuropäischen Ländern erreichten Zehnjahreszeiträume, die 2015 bis 2025 endeten, diesen Wert in 14 von 154 Fällen. Folgte auf ein Jahrzehnt unter 0,9 % das nächste, gelang es in 7 von 56 Fällen."
+p = 0.20
+gruende = [
+  "Das Arbeitsvolumen schrumpft, bis 2031 nach unserer Rechnung um etwa 0,6 % pro Jahr. Wachstum kann fast nur noch aus der Produktivität kommen; von 2015 bis 2025 waren es 0,7 % pro Jahr.",
+  "2025 setzte gut ein Viertel der Unternehmen KI ein, der Anteil steigt schnell. Knappe Arbeit lohnt Kapital je Stunde, und 2025 lag das Plus schon bei 1,1 %.",
+  "Laut Sachverständigenrat stockt die Verbreitung neuer Technik in der Breite der Unternehmen; seine Potenzialschätzung läuft nach unserer Rechnung auf etwa 0,8 bis 0,9 % hinaus.",
+]
+[[unsicherheit]]
+id = "U3"
+achse = "B"
+titel = "Wie viele Menschen kommen?"
+kriterium = "Die Nettozuwanderung beträgt von 2027 bis 2035 im Schnitt mindestens 200.000 Personen pro Jahr."
+zaehlt = "zählt als breit, wenn ja"
+basisrate = "Von 27 Neunjahreszeiträumen seit 1991 erreichten 17 diesen Schnitt. Seit 1991 lag die Nettozuwanderung in 24 von 35 Jahren bei mindestens 200.000."
+p = 0.35
+gruende = [
+  "Zuwanderung entscheidet, wie stark die Erwerbsbevölkerung schrumpft. Die Projektion der Sozialbeiträge rechnet mit 200.000 im Jahr, die neue Konjunkturprognose nur noch mit 150.000.",
+  "In der Vergangenheit war 200.000 eher die Regel als die Ausnahme. Mit der Erholung kehrt die Nachfrage nach Arbeitskräften zurück.",
+  "Von Januar bis August 2026 kamen netto 17.000 Menschen, nach 235.000 im ganzen Jahr 2025. Die Asylpolitik ist seit 2025 restriktiver, und die Herkunftsländer in der EU altern selbst.",
+]
+[[unsicherheit]]
+id = "U4"
+achse = "B"
+titel = "Wer trägt die Anpassung?"
+kriterium = "Die Summe der Beitragssätze zur Sozialversicherung liegt 2035 bei mindestens 46 % (heute 42,3 %)."
+zaehlt = "zählt als breit, wenn nein"
+basisrate = "Seit 1995 lag die Summe zwischen 39,3 und 42,3 %. Der größte Anstieg in neun Jahren waren 2,6 Prozentpunkte; ein Anstieg um 3,7 Punkte hat seit 1995 kein Beispiel."
+p = 0.55
+gruende = [
+  "Unter geltendem Recht steigt die Summe auf 45,4 % (2030) und 49,7 % (2040). Das kostet bis 2035 0,5 bis 0,9 % des BIP und verschiebt Lasten auf Jüngere.",
+  "Die Haltelinie für das Rentenniveau gilt bis 2031, die Babyboomer gehen bis Mitte der 2030er-Jahre in Rente, und der Rentenbeitrag soll 2028 laut Entwurf auf 19,7 % steigen.",
+  "Dreißig Jahre lang blieb die Summe um 40 %, auch durch Reformen wie Riester-Rente, Nachhaltigkeitsfaktor und Rente mit 67. Höhere Bundeszuschüsse können die Last in den Haushalt verschieben.",
+]
+[[unsicherheit]]
+id = "U5"
+achse = "B"
+titel = "Bleiben die Zinsen tragbar?"
+kriterium = "Die Rendite zehnjähriger Bundesanleihen liegt im Schnitt der Jahre 2031 bis 2035 über dem nominalen Wachstum des BIP."
+zaehlt = "zählt als breit, wenn nein"
+basisrate = "In Deutschland lag die Rendite in 14 von 26 Fünfjahreszeiträumen seit 1996 über dem Wachstum: in allen, die bis 2009 begannen, in keinem danach. In Westeuropa traf es in 140 von 312 Zeiträumen zu."
+p = 0.60
+gruende = [
+  "Liegt der Zins über dem Wachstum, steigt die Schuldenquote ohne Überschüsse von allein. Ein halber Prozentpunkt mehr Zins vergrößert die Lücke 2040 um 0,25 bis 0,33 % des BIP.",
+  "Die Bundrendite stieg von −0,5 % (2020) auf 3,4 % (Oktober 2026), die EZB erhöht wieder. Bei realem Wachstum um 0,3 % und 2 % Inflation wächst die Wirtschaft nominal nur um gut 2 %.",
+  "Zinsen schwanken in Zyklen, und Bundesanleihen bleiben der sichere Hafen im Euroraum, wenn andere Länder unter Druck geraten.",
+]
+[[unsicherheit]]
+id = "U1"
+achse = "L"
+titel = "Schließt die Politik die Lücke?"
+kriterium = "Das gesamtstaatliche Defizit liegt 2035 bei höchstens 3,0 % des BIP."
+zaehlt = "Ergebnis je Feld"
+basisrate = "Seit 1995 lag Deutschlands Defizit in 20 von 31 Jahren bei höchstens 3 %, und jede Phase darüber endete nach zwei bis fünf Jahren. In Europa lag ein Land mit mehr als 4 % Defizit neun Jahre später in 72 von 144 Fällen wieder bei höchstens 3 %."
+p = 0.45
+gruende = [
+  "Daran hängt, ob die Schuldenquote 2040 bei 78 oder bei 98 % liegt und ob der Bund dann gestalten kann oder vor allem Zinsen zahlt.",
+  "Deutschland hat jedes Defizit seit 1995 binnen fünf Jahren zurückgeführt. Nach 2028 endet die Ausweichklausel der EU-Regeln, und die Märkte preisen Zweifel ein.",
+  "Diesmal ist das Defizit rechtlich gedeckt: Die Bereichsausnahme für Verteidigung ist unbefristet, und ohne neue Entscheidung bleibt das Defizit laut Sachverständigenrat dauerhaft über 3 %.",
+]
+[[unsicherheit]]
+id = "U8"
+achse = "I"
+titel = "Hält das Industriemodell?"
+kriterium = "Das Verarbeitende Gewerbe erwirtschaftet 2035 mindestens 17,5 % der Bruttowertschöpfung (2025: 19,4 %)."
+zaehlt = "Ergebnis je Feld"
+basisrate = "In europäischen Ländern mit einem Industrieanteil von mindestens 15 % fiel er binnen zehn Jahren in 131 von 283 Fällen um mehr als zwei Punkte. In Deutschland fiel er von 2015 bis 2025 um 3,1 Punkte."
+p = 0.40
+gruende = [
+  "Die Industrie trägt Exporte, Forschung und viele gut bezahlte Stellen. Verliert sie weiter, ändert sich, wovon Deutschland lebt.",
+  "Die Aufträge aus der EU steigen seit Mitte 2025, die Exporte überraschen 2026 positiv, und Rüstung und Infrastruktur bringen neue Nachfrage.",
+  "Die Exporte nach China fallen seit 2024 stark, US-Zölle und chinesische Konkurrenz drücken Fahrzeug- und Maschinenbau, und Energie bleibt teuer.",
+]
+
+# ---------------------------------------------------------------- Signale
+# achse A/B: richtung bezogen auf den Pol plus (A: ruhiger, B: breiter). L/I: plus = Lücke geschlossen bzw. Industrie hält.
+# gewicht 1 schwach, 2 mittel, 3 stark. datum = Tag der Auflösung (für die Reihenfolge).
+[[signal]]
+id = "S01"
+datum = 2027-01-05
+wann = "Dezember 2026"
+achse = "A"
+richtung = "minus"
+gewicht = 1
+p = 0.70
+kurz = "Brent im Dezember über 100 $"
+frage = "Kostet Brent im Dezember 2026 im Monatsmittel mehr als 100 US-Dollar?"
+aufloesung = "Brent-Spot, Monatsmittel (EIA), Anfang Januar 2027"
+referenz = "Terminkurve 4. Quartal 2026: 108 $"
+basisrate = "Seit 1987 lag der Ölpreis zwei Monate später in 78 % der Fälle über 92,6 % des Ausgangswerts."
+crowd = "bedingt"
+gruende = ["Der Ölpreis zeigt am schnellsten, ob der Schock vom Golf nachlässt.", "Die Terminkurve liegt bei 108 $, die Straße von Hormus ist weiter eingeschränkt.", "Im Sommer 2026 fiel der Preis vorübergehend deutlich, entgegen den Terminkursen."]
+
+[[signal]]
+id = "S02"
+datum = 2026-12-15
+wann = "Dezember 2026"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.50
+kurz = "KI-Nutzung 2026 mindestens 32 %"
+frage = "Nutzen 2026 mindestens 32 % der Unternehmen ab zehn Beschäftigten KI?"
+aufloesung = "Destatis, Erhebung zur IKT-Nutzung (die Werte für 2024 erschienen im November 2024)"
+referenz = "2023: 12 %, 2024: 20 %, 2025: 26 %"
+basisrate = "Zuletzt kamen 8 und 6 Prozentpunkte pro Jahr dazu; 32 % braucht noch einmal 6."
+crowd = "bedingt"
+gruende = ["Es zeigt, ob KI in der Breite der Unternehmen ankommt; genau dort stockt laut Sachverständigenrat die Produktivität.", "Wer KI schon nutzt, weitet sie aus: von 10 % der Arbeitszeit 2025 auf erwartet 13 % 2026.", "Der Zuwachs flacht ab, und Firmen ohne KI nennen fehlendes Wissen (72 %) und Rechtsunsicherheit (62 %)."]
+
+[[signal]]
+id = "S03"
+datum = 2027-01-15
+wann = "Mitte Januar 2027"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.50
+kurz = "BIP 2026 mindestens +1,3 %"
+frage = "Wuchs das BIP 2026 preisbereinigt um mindestens 1,3 %?"
+aufloesung = "Destatis, erste Jahresrechnung"
+referenz = "Prognose des Sachverständigenrates: 1,3 %; 1. und 2. Quartal +0,4 und +0,3 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["Es ist der erste Test, ob die Erholung so trägt, wie der Rat erwartet.", "Exporte und Staatskonsum sind stark, und die Revision vom Juli 2026 zeigte ein besseres Bild seit 2024.", "Für das 2. Halbjahr erwartet der Rat selbst weniger Schwung, und die Energiepreise steigen wieder."]
+
+[[signal]]
+id = "S04"
+datum = 2027-01-15
+wann = "Mitte Januar 2027"
+achse = "L"
+richtung = "minus"
+gewicht = 1
+p = 0.50
+kurz = "Defizit 2026 mindestens 4,1 %"
+frage = "Lag das Staatsdefizit 2026 bei mindestens 4,1 % des BIP?"
+aufloesung = "Destatis, erste Jahresrechnung"
+referenz = "Prognose: 4,1 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["Es zeigt, wie schnell Kredite für Verteidigung und Sondervermögen abfließen.", "Verteidigung liegt über dem Finanzplan, und die beiden Tankrabatte mindern 2026 die Einnahmen.", "Investitionen fließen erfahrungsgemäß langsamer ab als geplant."]
+
+[[signal]]
+id = "S05"
+datum = 2027-01-29
+wann = "Ende Januar 2027"
+achse = "B"
+richtung = "minus"
+gewicht = 1
+p = 0.95
+kurz = "Bevölkerung 2026 geschrumpft"
+frage = "Ist die Bevölkerung Deutschlands 2026 geschrumpft?"
+aufloesung = "Destatis, erste Schätzung zum Jahresende"
+referenz = "Nettozuwanderung Januar bis August 2026: 17.000; Sterbeüberschuss zuletzt rund 330.000 im Jahr"
+basisrate = "In 11 von 34 Jahren seit 1991 (ohne den Zensusbruch 2022)."
+crowd = "ja"
+gruende = ["Es ist das sichtbarste Zeichen der demografischen Wende.", "Die Zuwanderung reicht 2026 bei Weitem nicht, um den Sterbeüberschuss auszugleichen.", "Nur ein ungewöhnlich starkes Jahresende bei der Zuwanderung könnte das ändern."]
+
+[[signal]]
+id = "S06"
+datum = 2027-02-05
+wann = "Anfang Februar 2027"
+achse = "A"
+richtung = "minus"
+gewicht = 1
+p = 0.50
+kurz = "Gas im Januar über 90 €/MWh"
+frage = "Kostet Gas (THE) im Januar 2027 im Monatsmittel mehr als 90 €/MWh?"
+aufloesung = "Monatsmittel THE (EEX)"
+referenz = "Terminkurve 1. Quartal 2027: 92,5 €; September 2026 rund 78 €"
+basisrate = "Ein Anstieg um mehr als 16 % in vier Monaten kam seit 1992 in 21 % der Fälle vor."
+crowd = "bedingt"
+gruende = ["Gas ist der Engpass dieses Winters und der Kostenblock der energieintensiven Industrie.", "Die Speicher waren am 9.11.2026 nur zu 59 % gefüllt, so niedrig wie nie seit 2011; der Markt preist den Winter ein.", "Ein milder Winter hat die Preise 2022/23 schnell gedrückt, und die Basisrate liegt niedrig."]
+
+[[signal]]
+id = "S07"
+datum = 2027-02-25
+wann = "Ende Februar 2027"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.45
+kurz = "Produktivität 2026 mindestens +1,5 %"
+frage = "Wuchs die Produktivität je Erwerbstätigenstunde 2026 um mindestens 1,5 %?"
+aufloesung = "Destatis, ausführliche Jahresergebnisse"
+referenz = "2025: +1,1 %"
+basisrate = "In 13 von 34 Jahren seit 1992; seit 2010 in 4 von 16."
+crowd = "bedingt"
+gruende = ["Es ist der erste Jahreswert für die Frage, ob die Produktivität zurückkommt.", "Das BIP wächst um 1,3 %, während die Zahl der Erwerbstätigen sinkt.", "Seit 2010 gelang ein solches Jahr nur viermal, und die Arbeitszeit je Kopf schwankt."]
+
+[[signal]]
+id = "S08"
+datum = 2027-02-26
+wann = "Ende Februar 2027"
+achse = "I"
+richtung = "plus"
+gewicht = 1
+p = 0.45
+kurz = "Industrieproduktion 4. Quartal über Vorjahr"
+frage = "Lag die Industrieproduktion im 4. Quartal 2026 über dem 4. Quartal 2025?"
+aufloesung = "Destatis/Eurostat, Produktion ohne Bau, saisonbereinigt"
+referenz = "4. Quartal 2025: 92,1 (2021 = 100); September 2026: 92,2"
+basisrate = "In 19 von 34 Jahren; seit 2018 in 1 von 8."
+crowd = "ja"
+gruende = ["Es zeigt, ob die Erholung der Exporte in der Produktion ankommt.", "Die Aufträge steigen seit Mitte 2025, und der September liegt schon auf dem Vorjahresniveau.", "Seit 2018 lag das 4. Quartal fast immer unter dem Vorjahr, und der Winter verteuert Energie."]
+
+[[signal]]
+id = "S11"
+datum = 2027-03-15
+wann = "März 2027"
+achse = "B"
+richtung = "minus"
+gewicht = 1
+p = 0.55
+kurz = "Rentenanpassung 2027 mindestens 4,0 %"
+frage = "Steigen die Renten zum 1.7.2027 um mindestens 4,0 %?"
+aufloesung = "Bundesregierung, Bekanntgabe im März 2027"
+referenz = "Entwurf des Rentenversicherungsberichts: 4,1 %; 2026: 4,24 %"
+basisrate = "In 4 von 7 Jahren seit 2020."
+crowd = "ja"
+gruende = ["Mit der Haltelinie steigen die Renten wie die Löhne; das treibt den Beitragsbedarf.", "Die Effektivlöhne stiegen 2026 kräftig, auch durch Abfindungen in der Industrie.", "Die Tariflöhne steigen laut Rat moderat, und der Entwurf liegt nur knapp über der Schwelle."]
+
+[[signal]]
+id = "S09"
+datum = 2027-03-31
+wann = "bis 31.03.2027"
+achse = "B"
+richtung = "minus"
+gewicht = 1
+p = 0.65
+kurz = "EZB-Einlagesatz mindestens 2,75 %"
+frage = "Liegt der Einlagesatz der EZB am 31.03.2027 bei mindestens 2,75 %?"
+aufloesung = "EZB"
+referenz = "heute 2,5 % nach Erhöhungen im Juni und September 2026; Terminmarkt für das 1. Quartal: 2,8 %"
+basisrate = "Auf 25 von 32 Erhöhungen seit 1999 folgte binnen sechs Monaten die nächste."
+crowd = "bedingt"
+gruende = ["Höhere Leitzinsen heben die Kosten neuer Schulden und bremsen Investitionen.", "Die Inflation steigt 2027 laut Prognose auf 3,3 %, und der Markt erwartet weitere Schritte.", "Die Konjunktur im Euroraum ist schwach; 2011 nahm die EZB Erhöhungen binnen Monaten zurück."]
+
+[[signal]]
+id = "S10"
+datum = 2027-03-31
+wann = "bis 31.03.2027"
+achse = "L"
+richtung = "plus"
+gewicht = 1
+p = 0.65
+kurz = "Eckwerte für den Haushalt 2028"
+frage = "Beschließt das Bundeskabinett bis 31.03.2027 Eckwerte für den Haushalt 2028?"
+aufloesung = "Bundesministerium der Finanzen"
+referenz = "2024 und 2025 ausgesetzt"
+basisrate = "Seit Einführung 2011 in der Regel jedes Jahr, ausgesetzt nur 2024 und 2025."
+crowd = "ja"
+gruende = ["Eckwerte sind der früheste Punkt im Jahr, an dem eine Regierung Prioritäten festlegen muss.", "Ab 2028 klaffen laut Finanzplan große Lücken, und der Sachverständigenrat drängt auf Pfade in dieser Wahlperiode.", "Genau dieser Verteilungskonflikt hat das Verfahren zuletzt zweimal ausgesetzt."]
+
+[[signal]]
+id = "S12"
+datum = 2027-04-15
+wann = "April 2027"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.45
+kurz = "Gemeinschaftsdiagnose: 2027 mindestens +1,0 %"
+frage = "Erwarten die Institute der Gemeinschaftsdiagnose im Frühjahr 2027 für 2027 mindestens 1,0 % Wachstum?"
+aufloesung = "Gemeinschaftsdiagnose Frühjahr 2027"
+referenz = "Sachverständigenrat: 1,0 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["Es ist eine zweite Sicht auf dieselbe Frage, ein halbes Jahr später und mit neuen Daten.", "Ausgaben für Verteidigung und Infrastruktur fließen 2027 stärker.", "Energie- und Zinsschock wirken nach, die Kaufkraft wächst nur wenig."]
+
+[[signal]]
+id = "S13"
+datum = 2027-05-15
+wann = "Mitte Mai 2027"
+achse = "I"
+richtung = "plus"
+gewicht = 1
+p = 0.55
+kurz = "Industrieproduktion 1. Quartal über Vorjahr"
+frage = "Lag die Industrieproduktion im 1. Quartal 2027 über dem 1. Quartal 2026?"
+aufloesung = "Destatis/Eurostat"
+referenz = "1. Quartal 2026: 91,2"
+basisrate = "In 21 von 35 Jahren; seit 2018 in 2 von 9."
+crowd = "ja"
+gruende = ["Das erste Quartal 2026 lag niedrig; ein Plus zeigt, ob die Erholung die Industrie erreicht.", "Die Produktion lag im September 2026 schon einen Punkt über dem 1. Quartal 2026.", "Seit 2018 gelang ein Plus im ersten Quartal nur zweimal."]
+
+[[signal]]
+id = "S14"
+datum = 2027-06-05
+wann = "Juni 2027"
+achse = "L"
+richtung = "plus"
+gewicht = 1
+p = 0.10
+kurz = "EU-Kommission empfiehlt Defizitverfahren"
+frage = "Empfiehlt die EU-Kommission im Frühjahrspaket 2027, ein Defizitverfahren gegen Deutschland zu eröffnen?"
+aufloesung = "EU-Kommission"
+referenz = "Die nationale Ausweichklausel deckt zusätzliche Verteidigungsausgaben bis 2028"
+basisrate = "Gegen Deutschland wurden 2003 und 2009 Verfahren eröffnet; 2024 schlug die Kommission für sieben Länder mit Defiziten über 3 % ein Verfahren vor."
+crowd = "ja"
+gruende = ["Ein Verfahren wäre der erste äußere Zwang zur Konsolidierung.", "Das Defizit liegt 2026 und 2027 über 4 %.", "Der größte Teil des Anstiegs ist Verteidigung, und genau die nimmt die Klausel bis 2028 aus."]
+
+[[signal]]
+id = "S15"
+datum = 2027-06-25
+wann = "Juni 2027"
+achse = "B"
+richtung = "plus"
+gewicht = 2
+p = 0.10
+kurz = "Nettozuwanderung 2026 mindestens 100.000"
+frage = "Lag die Nettozuwanderung 2026 bei mindestens 100.000 Personen?"
+aufloesung = "Destatis, Wanderungsstatistik"
+referenz = "Annahme des Sachverständigenrates: 100.000; Januar bis August: 17.000"
+basisrate = "In 27 von 35 Jahren seit 1991."
+crowd = "ja"
+gruende = ["Es prüft direkt die Annahme, auf der die Potenzialschätzung des Rates beruht.", "Von September bis Dezember 2025 kamen netto rund 110.000 Menschen.", "Von Januar bis August 2026 lag der Wert 86 % unter dem Vorjahr; selbst ein starkes Jahresende reicht kaum."]
+
+[[signal]]
+id = "S16"
+datum = 2027-06-30
+wann = "Juni 2027"
+achse = "B"
+richtung = "minus"
+gewicht = 1
+p = 0.45
+kurz = "Bundrendite im Juni über 3,5 %"
+frage = "Liegt die Rendite zehnjähriger Bundesanleihen im Juni 2027 im Schnitt über 3,5 %?"
+aufloesung = "Eurostat/Bundesbank, Monatsmittel"
+referenz = "Oktober 2026: 3,42 %"
+basisrate = "Ein Anstieg um mehr als 0,08 Punkte in acht Monaten kam seit 1980 in 38 % der Fälle vor."
+crowd = "ja"
+gruende = ["Die Bundrendite entscheidet, ob der Zins dauerhaft über dem Wachstum liegt.", "Die EZB erhöht, die Schulden steigen überall, die Laufzeitprämien ziehen an.", "In Krisen fliehen Anleger in Bundesanleihen, und die Renditen fallen."]
+
+[[signal]]
+id = "S17"
+datum = 2027-06-30
+wann = "30.06.2027"
+achse = "A"
+richtung = "plus"
+gewicht = 2
+p = 0.15
+kurz = "Waffenstillstand Russland–Ukraine"
+frage = "Gilt am 30.06.2027 ein zwischen Russland und der Ukraine vereinbarter Waffenstillstand?"
+aufloesung = "Von beiden Regierungen erklärt und in Kraft"
+referenz = "Gespräche in Abu Dhabi seit 10.11.2026"
+basisrate = "Keine der Verhandlungsrunden seit 2022 führte zu einem Waffenstillstand."
+crowd = "ja"
+gruende = ["Ein Waffenstillstand verändert die Dringlichkeit von 3,5 % für Verteidigung.", "Die Gespräche laufen wieder, mit US-Vermittlung und Signalen von Flexibilität.", "Gebietsfragen und Sicherheitsgarantien sind ungelöst, und frühere Runden endeten ohne Ergebnis."]
+
+[[signal]]
+id = "S18"
+datum = 2027-06-30
+wann = "30.06.2027"
+achse = "A"
+richtung = "minus"
+gewicht = 2
+p = 0.12
+kurz = "Notlage oder neues Sondervermögen"
+frage = "Erklärt der Bundestag im 1. Halbjahr 2027 eine Notlage oder beschließt er ein neues kreditfinanziertes Sondervermögen?"
+aufloesung = "Bundestag, Bundesgesetzblatt"
+referenz = "zuletzt 2025 (Sondervermögen Infrastruktur und Klimaneutralität)"
+basisrate = "In 5 von 18 Jahren seit 2009, rund 15 % je Halbjahr."
+crowd = "ja"
+gruende = ["Jede neue Krisenkasse kommt zu den Schuldenpfaden des Sachverständigenrates hinzu.", "Knappe Gasspeicher und hohe Energiepreise im Winter.", "Verteidigung und Infrastruktur sind schon abgedeckt, und ein milder Winter nimmt den Druck."]
+
+[[signal]]
+id = "S19"
+datum = 2027-06-30
+wann = "30.06.2027"
+achse = "B"
+richtung = "plus"
+gewicht = 2
+p = 0.05
+kurz = "Gesetzentwurf: Rentenalter über 67"
+frage = "Beschließt das Kabinett einen Gesetzentwurf, der die Regelaltersgrenze über 67 Jahre anhebt oder an die Lebenserwartung koppelt?"
+aufloesung = "Bundesregierung"
+referenz = "Empfehlung des Sachverständigenrates"
+basisrate = "Seit der Rente mit 67 (2007) kein solcher Entwurf."
+crowd = "ja"
+gruende = ["Ein längeres Erwerbsleben ist der stärkste Hebel gegen steigende Beiträge.", "Der Beitragsdruck steigt sichtbar, und der Rat empfiehlt es.", "Die Regierung setzt auf freiwilliges längeres Arbeiten (Aktivrente), und das Thema ist politisch heikel."]
+
+[[signal]]
+id = "S20"
+datum = 2027-07-10
+wann = "Mitte 2027"
+achse = "A"
+richtung = "minus"
+gewicht = 1
+p = 0.45
+kurz = "NATO-Quote 2027 mindestens 3,0 %"
+frage = "Schätzt die NATO Deutschlands Verteidigungsquote für 2027 auf mindestens 3,0 % des BIP?"
+aufloesung = "NATO, Bericht zu den Verteidigungsausgaben"
+referenz = "2026: 2,69 %; Ziel der Bundesregierung 3,5 % bis 2029, linear rund 2,96 % für 2027"
+basisrate = "Das Zwei-Prozent-Ziel erreichte Deutschland erst im Zieljahr 2024."
+crowd = "ja"
+gruende = ["Es zeigt, ob der Aufwuchs dem Plan folgt.", "Der Haushaltsentwurf 2027 sieht mehr Verteidigung vor als der Finanzplan.", "Beschaffung kommt oft langsamer voran als geplant, und der lineare Pfad liegt knapp unter 3 %."]
+
+[[signal]]
+id = "S21"
+datum = 2027-07-15
+wann = "Juli 2027"
+achse = "L"
+richtung = "plus"
+gewicht = 2
+p = 0.30
+kurz = "Finanzplan: weniger Globalansätze für 2030"
+frage = "Weist der nächste Finanzplan für 2030 negative Globalansätze von weniger als 72 Mrd € aus?"
+aufloesung = "Kabinettsbeschluss zum Haushaltsentwurf 2028 und Finanzplan bis 2031"
+referenz = "heute 72 Mrd €, davon 48 Mrd € Handlungsbedarf"
+basisrate = "Der Anteil stieg von 1,6 % der Ausgaben (Plan für 2025) auf 11,3 % (Plan für 2030)."
+crowd = "nein"
+gruende = ["Es misst, ob eingeplante Einsparungen durch echte Maßnahmen ersetzt werden.", "Der Druck des Gutachtens und die nahende Wahl 2029.", "Bisher wuchsen diese Posten mit jedem Finanzplan."]
+
+[[signal]]
+id = "S23"
+datum = 2027-11-01
+wann = "November 2027"
+achse = "B"
+richtung = "minus"
+gewicht = 1
+p = 0.35
+kurz = "GKV-Zusatzbeitrag 2028 mindestens 3,2 %"
+frage = "Liegt der durchschnittliche Zusatzbeitrag der gesetzlichen Krankenversicherung für 2028 bei mindestens 3,2 %?"
+aufloesung = "Bekanntmachung des Bundesgesundheitsministeriums bis 1.11.2027"
+referenz = "2026 und 2027: 2,9 %"
+basisrate = "Ein Anstieg um mindestens 0,3 Punkte kam in 3 von 12 Jahren seit 2016 vor."
+crowd = "ja"
+gruende = ["Die Krankenversicherung treibt den Anstieg der Sozialbeiträge am stärksten.", "Krankenhaus und Arzneimittel verteuern sich weiter; der Pfad des Rates führt etwa auf 3,2 %.", "Das Gesetz zur Beitragssatzstabilisierung wirkt ab 2027."]
+
+[[signal]]
+id = "S22"
+datum = 2027-11-20
+wann = "November 2027"
+achse = "B"
+richtung = "minus"
+gewicht = 1
+p = 0.55
+kurz = "Rentenbeitrag 2028 mindestens 19,7 %"
+frage = "Steigt der Beitragssatz zur Rentenversicherung 2028 auf mindestens 19,7 %?"
+aufloesung = "Beitragssatzverordnung 2028"
+referenz = "seit 2018: 18,6 %; Entwurf des Rentenversicherungsberichts: 19,7 %"
+basisrate = "Seit 1995 stieg der Satz nur einmal um mehr als einen Punkt in einem Jahr (1997)."
+crowd = "ja"
+gruende = ["Es ist der erste große Sprung der Beiträge, den die Projektion vorhersagt.", "Die Rücklage schrumpft, und die Haltelinie gilt bis 2031.", "Ein höherer Bundeszuschuss kann den Sprung dämpfen; der Bericht ist noch nicht abgestimmt."]
+
+[[signal]]
+id = "S24"
+datum = 2027-12-31
+wann = "bis 31.12.2027"
+achse = "L"
+richtung = "plus"
+gewicht = 2
+p = 0.08
+kurz = "Abbau des Dieselprivilegs"
+frage = "Beschließt der Bundestag bis Ende 2027, die Energiesteuervergünstigung für Diesel abzubauen, auch stufenweise?"
+aufloesung = "Bundesgesetzblatt"
+referenz = "Vorschlag des Sachverständigenrates zum Subventionsabbau"
+basisrate = "Die Vergünstigung besteht seit Jahrzehnten; die Abschaffung der Agrardiesel-Vergütung wurde nach Protesten rückgängig gemacht."
+crowd = "ja"
+gruende = ["Es testet, ob die Politik gegen sichtbaren Widerstand Subventionen streicht.", "Der Konsolidierungsbedarf ist groß, und das Privileg widerspricht den Klimazielen.", "Hohe Spritpreise im Jahr 2026 und die Erfahrung mit dem Agrardiesel."]
+
+[[signal]]
+id = "S25"
+datum = 2028-01-05
+wann = "Anfang Januar 2028"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.45
+kurz = "Arbeitslosenquote 2027 höchstens 6,3 %"
+frage = "Lag die Arbeitslosenquote 2027 im Jahresschnitt bei höchstens 6,3 %?"
+aufloesung = "Bundesagentur für Arbeit"
+referenz = "Prognose: 6,3 %; Oktober 2026: 6,4 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["Mehr Beschäftigte heißt mehr Beitragszahler.", "Die Frühindikatoren sind zurück im neutralen Bereich.", "Die Industrie baut weiter Stellen ab, und der Wechsel zwischen Branchen stockt."]
+
+[[signal]]
+id = "S26"
+datum = 2028-01-15
+wann = "Mitte Januar 2028"
+achse = "A"
+richtung = "minus"
+gewicht = 1
+p = 0.45
+kurz = "Inflation 2027 mindestens 3,3 %"
+frage = "Lag die Inflation (Verbraucherpreise) 2027 bei mindestens 3,3 %?"
+aufloesung = "Destatis"
+referenz = "Prognose: 3,3 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["Die Inflation zeigt, wie stark der Energieschock in die Breite geht.", "Strom wird 2027 laut Terminkurve 21 % teurer.", "Die Terminkurve sieht Öl und Gas im Lauf des Jahres sinken."]
+
+[[signal]]
+id = "S27"
+datum = 2028-01-15
+wann = "Mitte Januar 2028"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.45
+kurz = "BIP 2027 mindestens +1,0 %"
+frage = "Wuchs das BIP 2027 preisbereinigt um mindestens 1,0 %?"
+aufloesung = "Destatis"
+referenz = "Prognose: 1,0 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["Es ist der zweite Jahrestest der Prognose, mit einem Jahr mehr Unsicherheit.", "Staatsausgaben und Konsum sollen 2027 tragen.", "Höhere Zinsen und Energiepreise belasten Investitionen und Kaufkraft."]
+
+[[signal]]
+id = "S28"
+datum = 2028-04-22
+wann = "April 2028"
+achse = "L"
+richtung = "minus"
+gewicht = 1
+p = 0.50
+kurz = "Defizit 2027 mindestens 4,3 %"
+frage = "Lag das Staatsdefizit 2027 bei mindestens 4,3 % des BIP?"
+aufloesung = "Defizitmeldung an Eurostat"
+referenz = "Prognose: 4,3 %"
+basisrate = "50 %: Eine erwartungstreue Prognose liegt so oft darüber wie darunter."
+crowd = "ja"
+gruende = ["2027 ist das Jahr, in dem das Sondervermögen Bundeswehr ausgeschöpft wird.", "Verteidigung und Zinsen steigen weiter.", "Die Reformen in Kranken- und Pflegeversicherung bremsen ab 2027."]
+
+[[signal]]
+id = "S29"
+datum = 2028-06-25
+wann = "Juni 2028"
+achse = "B"
+richtung = "plus"
+gewicht = 2
+p = 0.30
+kurz = "Nettozuwanderung 2027 mindestens 150.000"
+frage = "Lag die Nettozuwanderung 2027 bei mindestens 150.000 Personen?"
+aufloesung = "Destatis, Wanderungsstatistik"
+referenz = "Annahme des Sachverständigenrates: 150.000"
+basisrate = "In 25 von 35 Jahren seit 1991."
+crowd = "ja"
+gruende = ["Es prüft, ob sich die Zuwanderung nach dem Einbruch 2026 erholt.", "Mit der Konjunktur kehrt die Nachfrage nach Arbeitskräften zurück.", "Ein Teil des Einbruchs ist politisch gewollt, und der Arbeitsmarkt bleibt schwach."]
+
+[[signal]]
+id = "S30"
+datum = 2028-12-10
+wann = "Dezember 2028"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.55
+kurz = "KI-Nutzung 2028 mindestens 40 %"
+frage = "Nutzen 2028 mindestens 40 % der Unternehmen ab zehn Beschäftigten KI?"
+aufloesung = "Destatis, Erhebung zur IKT-Nutzung"
+referenz = "2025: 26 %"
+basisrate = "Bei 6 Prozentpunkten pro Jahr wären es 2028 44 %."
+crowd = "bedingt"
+gruende = ["40 % hieße, KI ist in einem großen Teil der mittleren Betriebe angekommen.", "Die Werkzeuge werden billiger und einfacher.", "Kleine Firmen holen langsamer auf, und Rechtsunsicherheit bleibt."]
+
+[[signal]]
+id = "S31"
+datum = 2028-12-31
+wann = "bis 31.12.2028"
+achse = "L"
+richtung = "plus"
+gewicht = 2
+p = 0.15
+kurz = "Umsatzsteuer oder Verteidigungsabgabe erhöht"
+frage = "Wird bis Ende 2028 der reguläre Umsatzsteuersatz erhöht oder eine Ergänzungsabgabe für Verteidigung beschlossen?"
+aufloesung = "Bundesgesetzblatt"
+referenz = "Sachverständigenrat: mittelfristig kaum vermeidbar; ein Ratsmitglied widerspricht"
+basisrate = "Seit 1990 gab es fünf solche Erhöhungen (Solidaritätszuschlag 1991 und 1995, Umsatzsteuer 1993, 1998, 2007), keine seit 2007; rund ein Viertel je Zweijahreszeitraum."
+crowd = "ja"
+gruende = ["Es zeigt, ob die Lücke über die Einnahmen geschlossen wird.", "Die Lücke ist größer als alle Sparvorschläge zusammen.", "Steuererhöhungen vor einer Wahl sind selten, und Teile der Koalition lehnen sie ab."]
+
+[[signal]]
+id = "S32"
+datum = 2028-12-31
+wann = "bis 31.12.2028"
+achse = "B"
+richtung = "plus"
+gewicht = 1
+p = 0.08
+kurz = "Kündigungsschutz gelockert"
+frage = "Wird bis Ende 2028 der Kündigungsschutz für Beschäftigte oberhalb einer Einkommensgrenze gelockert?"
+aufloesung = "Bundesgesetzblatt"
+referenz = "Empfehlung des Sachverständigenrates"
+basisrate = "Gelockert 1996 und 2004; die Lockerung von 1996 wurde 1999 zurückgenommen."
+crowd = "ja"
+gruende = ["Mobilität der Arbeit ist einer der drei Hebel für Produktivität im Gutachten.", "Der Rat empfiehlt es ausdrücklich.", "Bei steigender Arbeitslosigkeit ist eine Lockerung schwer zu vermitteln."]
+
+[[signal]]
+id = "S33"
+datum = 2029-03-31
+wann = "Frühjahr 2029"
+achse = "L"
+richtung = "plus"
+gewicht = 3
+p = 0.20
+kurz = "Rückführung der Verteidigungskredite beschlossen"
+frage = "Beschließen Bundestag und Bundesrat bis zum Ende der Wahlperiode einen verbindlichen Pfad, der die Kreditfinanzierung der Verteidigung zurückführt?"
+aufloesung = "Bundesgesetzblatt (Grundgesetz oder Artikel-115-Gesetz)"
+referenz = "Empfehlung des Sachverständigenrates: ab 2031 um 0,25 Prozentpunkte des BIP pro Jahr"
+basisrate = "Von drei Grundgesetzänderungen zur Kreditaufnahme seit 2009 begrenzte eine (2009), zwei erweiterten den Spielraum (2022, 2025)."
+crowd = "ja"
+gruende = ["Es ist die zentrale Empfehlung des Gutachtens.", "Je später der Pfad kommt, desto härter wird er; das spricht für eine Entscheidung vor 2031.", "Eine Zweidrittelmehrheit für eine Selbstbindung ist schwer zu finden."]
+
+[[signal]]
+id = "S34"
+datum = 2029-07-01
+wann = "Mitte 2029"
+achse = "A"
+richtung = "minus"
+gewicht = 2
+p = 0.50
+kurz = "NATO-Quote 2029 mindestens 3,5 %"
+frage = "Schätzt die NATO Deutschlands Verteidigungsquote für 2029 auf mindestens 3,5 % des BIP?"
+aufloesung = "NATO, Bericht zu den Verteidigungsausgaben"
+referenz = "Plan der Bundesregierung: 3,5 % bis 2029"
+basisrate = "Das Zwei-Prozent-Ziel erreichte Deutschland im Zieljahr."
+crowd = "ja"
+gruende = ["Es ist die Halbzeit auf dem Weg zum Ziel von Den Haag für 2035.", "Die Finanzierung ist von der Schuldenbremse ausgenommen.", "Ein Waffenstillstand oder Engpässe in der Rüstungsindustrie können den Aufwuchs strecken."]
+
+[[signal]]
+id = "S35"
+datum = 2029-12-31
+wann = "bis 31.12.2029"
+achse = "L"
+richtung = "plus"
+gewicht = 1
+p = 0.40
+kurz = "EU eröffnet Defizitverfahren"
+frage = "Eröffnet der Rat der EU bis Ende 2029 ein Defizitverfahren gegen Deutschland?"
+aufloesung = "Rat der EU"
+referenz = "Ausweichklausel bis 2028"
+basisrate = "In beiden Phasen mit Defiziten über 3 % ohne allgemeine Ausweichklausel wurde ein Verfahren eröffnet (2003, 2009)."
+crowd = "ja"
+gruende = ["Nach 2028 entfällt der Schutz für Verteidigungsausgaben in den EU-Regeln.", "Laut Finanzplan liegt das Defizit auch 2029 über 3 %.", "Die EU kann die Ausnahme für Verteidigung verlängern."]
+
+[[signal]]
+id = "S36"
+datum = 2030-04-15
+wann = "Frühjahr 2030"
+achse = "B"
+richtung = "plus"
+gewicht = 2
+p = 0.40
+kurz = "Produktivität 2026–2029 mindestens +1,0 %"
+frage = "Wuchs die Produktivität je Erwerbstätigenstunde von 2025 bis 2029 im Schnitt um mindestens 1,0 % pro Jahr?"
+aufloesung = "Destatis"
+referenz = "Potenzialschätzung des Rates nach unserer Rechnung: 0,8 bis 0,9 %"
+basisrate = "In 20 von 31 Vierjahreszeiträumen seit 1991; seit 2006 in 6 von 16."
+crowd = "nein"
+gruende = ["Es ist die Halbzeit der Frage nach der Produktivität.", "KI und knappe Arbeit heben die Produktivität je Stunde.", "Seit 2006 gelang das nur in gut einem Drittel der Zeiträume."]
+
+[[signal]]
+id = "S37"
+datum = 2031-04-22
+wann = "April 2031"
+achse = "L"
+richtung = "plus"
+gewicht = 3
+p = 0.15
+kurz = "Defizit 2030 höchstens 3 %"
+frage = "Lag das Staatsdefizit 2030 bei höchstens 3 % des BIP?"
+aufloesung = "Defizitmeldung an Eurostat"
+referenz = "Laut Finanzplan liegt es in allen Szenarien des Rates bis 2030 über 3 %"
+basisrate = "In 20 von 31 Jahren seit 1995."
+crowd = "ja"
+gruende = ["Es zeigt, ob schon vor der Rückführung konsolidiert wurde.", "Ein Defizitverfahren oder bessere Einnahmen können früher wirken.", "Der Finanzplan sieht bis 2030 steigende Kredite für Verteidigung vor."]
+
+[[signal]]
+id = "S38"
+datum = 2031-09-30
+wann = "2031"
+achse = "I"
+richtung = "plus"
+gewicht = 3
+p = 0.45
+kurz = "Industrieanteil 2030 mindestens 18,5 %"
+frage = "Lag der Anteil des Verarbeitenden Gewerbes an der Bruttowertschöpfung 2030 bei mindestens 18,5 %?"
+aufloesung = "Eurostat"
+referenz = "2025: 19,4 %"
+basisrate = "Ein Rückgang um mehr als 0,9 Punkte in fünf Jahren kam in 11 von 30 Zeiträumen vor."
+crowd = "bedingt"
+gruende = ["Es ist die Halbzeit für die Frage, ob das Industriemodell hält.", "Rüstung und Infrastruktur bringen Nachfrage.", "Von 2015 bis 2025 fiel der Anteil um 3,1 Punkte."]
+
+[[signal]]
+id = "S39"
+datum = 2034-04-22
+wann = "April 2034"
+achse = "L"
+richtung = "plus"
+gewicht = 3
+p = 0.25
+kurz = "Defizit 2033 höchstens 3 %"
+frage = "Lag das Staatsdefizit 2033 bei höchstens 3 % des BIP?"
+aufloesung = "Defizitmeldung an Eurostat"
+referenz = "Nur der schnelle Rückführungspfad der Bundesbank bringt das Defizit bis 2033 unter 3 %"
+basisrate = "In 20 von 31 Jahren seit 1995."
+crowd = "ja"
+gruende = ["Es ist der letzte Halt vor dem Kartenjahr 2035.", "Deutschland hat jedes Defizit seit 1995 binnen fünf Jahren zurückgeführt.", "Ohne Entscheidung zur Bereichsausnahme bleibt es dauerhaft über 3 %."]
+
+# ---------------------------------------------------------------- Zeitstrahl-Abschnitte
+[[zeitraum]]
+name = "Winter 2026/27"
+bis = 2027-02-28
+[[zeitraum]]
+name = "Frühjahr 2027"
+bis = 2027-05-31
+[[zeitraum]]
+name = "Sommer 2027"
+bis = 2027-08-31
+[[zeitraum]]
+name = "Herbst 2027 bis Frühjahr 2028"
+bis = 2028-05-31
+[[zeitraum]]
+name = "Rest von 2028"
+bis = 2028-12-31
+[[zeitraum]]
+name = "2029 bis 2034"
+bis = 2034-12-31
